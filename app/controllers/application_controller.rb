@@ -8,7 +8,6 @@ class ApplicationController < Sinatra::Base
   end
 
   error ActiveRecord::RecordNotFound do
-    # 'Sorry there was a nasty error - ' + env['sinatra.error'].message
     {errors: "Record not found with id #{params['id']}"}.to_json
   end
 

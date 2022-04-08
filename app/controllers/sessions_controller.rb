@@ -4,8 +4,6 @@ post "/login" do
     @user = User.find_by_name(params[:name])
     if @user&.authenticate(params[:password])
         session[:user_id] = @user.id #save user id into server memory
-        # @current_user ||= User.find_by_id(session[:user_id])
-        # binding.pry
         halt 200, {id: @user.id, name: @user.name, message: "User logged in successfully."}.to_json
     else
         halt 404, {error: "Invalid login."}.to_json

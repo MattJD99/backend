@@ -28,11 +28,6 @@ class UsersController < ApplicationController
     end
   end
 
-# get "/most-plants"
-#   user = User.most_plants
-#   user.to_json(include: :plants)
-# end
-
   # GET: /users/5
   get "/users/:id" do
     find_user
@@ -47,16 +42,6 @@ class UsersController < ApplicationController
   patch "/users/:id" do
     find_user
     self.exercises.create(params)
-    binding.pry
-    # add_exersice.to_json
-    # find_user
-    # if @user && @user.update(params)
-    #   serialized_user
-    # elsif !@user
-    #   {errors: "Record not found with id #{params['id']}"}.to_json
-    # else
-    #   {errors: @user.errors.full_messages.to_sentence}.to_json
-    # end
   end
 
   # DELETE: /users/5/delete
@@ -78,10 +63,6 @@ class UsersController < ApplicationController
   def serialized_user
     @user.to_json(except: [:created_at, :updated_at])
   end
-
-  # def exercises(exercise_id, trainer_id)
-  #   self.exercises.create(exercise_id: exercise_id, workout_id: trainer_id)
-  # end
 
   def exercises
     self.exercises.where(user_id: self.id).to_json
