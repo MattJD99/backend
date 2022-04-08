@@ -16,32 +16,31 @@ ActiveRecord::Schema.define(version: 2022_03_06_203623) do
     t.string "exercise_name"
     t.string "video_link"
     t.string "description"
-    t.integer "trainer_id"
-    t.integer "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["trainer_id"], name: "index_exercises_on_trainer_id"
-    t.index ["user_id"], name: "index_exercises_on_user_id"
-  end
-
-  create_table "trainers", force: :cascade do |t|
-    t.string "trainer_name"
-    t.integer "sets"
-    t.integer "reps"
-    t.integer "weight"
-    t.boolean "false"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "username"
+    t.string "name"
     t.string "password_digest"
     t.string "email"
     t.integer "age"
     t.integer "weight"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "workouts", force: :cascade do |t|
+    t.string "exercise_name"
+    t.integer "sets"
+    t.integer "reps"
+    t.integer "weight"
+    t.integer "user_id"
+    t.integer "exercise_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["exercise_id"], name: "index_workouts_on_exercise_id"
+    t.index ["user_id"], name: "index_workouts_on_user_id"
   end
 
 end

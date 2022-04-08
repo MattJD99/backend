@@ -13,7 +13,8 @@ end
 
 use Rack::JSONBodyParser
 
+use SessionsController
 use ExercisesController
-use TrainersController
+use WorkoutsController
 use UsersController
 run ApplicationController

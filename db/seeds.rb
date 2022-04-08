@@ -2,12 +2,12 @@ puts "🌱 Seeding spices..."
 
 User.destroy_all
 Exercise.destroy_all
-Trainer.destroy_all
+Workout.destroy_all
 
 #Users
 
-User.create(username: "Matt", password_digest: "password", email: "dayclawtel@gmail.com", age: 29, weight: 173)
-User.create(username: "Kimmy", password_digest: "password", email: "kimmy@gmail.com", age: 28, weight: 133)
+User.create(name: "Matt", password_digest: "$2a$10$H2xzgSc6iBg7Qp6BDyJ0peE4k4bSYhm7nJiTN7rda6uchD/1Pmg8i", email: "dayclawtel@gmail.com", age: 29, weight: 173)
+User.create(name: "Kimmy", password_digest: "$2a$10$8wuwzlpj.F.m9kJBbLJtdecikonfwBj3D3dZj27z72dfNzE5HUNoa", email: "kimmy@gmail.com", age: 28, weight: 133)
 
 #Exercises
 
@@ -20,7 +20,9 @@ Exercise.create(exercise_name: "Standing overhead dumbbell presses", video_link:
 
 #Trainer
 
-Trainer.create(trainer_name: "Matt's Trainer")
-
+Workout.create(exercise_name: "Bicep Curl", sets: 3, reps: 12, weight: 35, user_id: 2, exercise_id: 1)
+Workout.create(exercise_name: "Lunges", sets: 3, reps: 12, weight: 100, user_id: 2, exercise_id: 2)
+Workout.create(exercise_name: "Push Ups", sets: 2, reps: 6, weight: 15, user_id: 2, exercise_id: 3)
+# Workout.create(exercise_name: "Standing overhead dumbbell presses", sets: 2, reps: 6, weight: 20, user_id: 1, exercise_id: 5)
 
 puts "✅ Done seeding!"

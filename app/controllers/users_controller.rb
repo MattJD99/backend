@@ -1,21 +1,37 @@
 require "pry"
-
 class UsersController < ApplicationController
 
   # GET: /users
   get "/users" do
-    User.all.to_json
+    User.all.to_json()
+  end
+
+  #GET: /workouts/:user_id
+  get "/users/:id/workouts" do
+    find_user
+    if @user
+      @user.exercises.to_json
+    else
+      user.errors.full_messages.to_sentence
+    end
   end
 
   # POST: /users
-  post "/users" do
+  post "/users" do # same as /signup
     @user = User.create(params)
+    binding.pry
     if @user.id
+      session[:user_id] = user.id
       serialized_user
     else
       user.errors.full_messages.to_sentence
     end
   end
+
+# get "/most-plants"
+#   user = User.most_plants
+#   user.to_json(include: :plants)
+# end
 
   # GET: /users/5
   get "/users/:id" do
@@ -44,7 +60,7 @@ class UsersController < ApplicationController
   end
 
   # DELETE: /users/5/delete
-  delete "/users/:id" do
+  delete "/users/:id/delete" do
     find_user
     if @user&.destroy
       {messages: "Record successfully destroyed"}.to_json
@@ -60,11 +76,15 @@ class UsersController < ApplicationController
   end
 
   def serialized_user
-    @user.to_json()
+    @user.to_json(except: [:created_at, :updated_at])
   end
 
-  def exersices(exercise_id, trainer_id)
-    self.exercises.create(exercise_id: exercise_id,trainer_id: trainer_id)
+  # def exercises(exercise_id, trainer_id)
+  #   self.exercises.create(exercise_id: exercise_id, workout_id: trainer_id)
+  # end
+
+  def exercises
+    self.exercises.where(user_id: self.id).to_json
   end
 
 end
