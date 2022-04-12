@@ -18,11 +18,11 @@ Exercise.create(exercise_name: "Squats", video_link: "QifjltKUMCk", description:
 Exercise.create(exercise_name: "Standing overhead dumbbell presses", video_link: "OOe_HrNnQWw", description: "Shoulders get big.")
 
 
-#Trainer
+#Workouts
 
-Workout.create(exercise_name: "Bicep Curl", sets: 3, reps: 12, weight: 35, user_id: 2, exercise_id: 1)
-Workout.create(exercise_name: "Lunges", sets: 3, reps: 12, weight: 100, user_id: 2, exercise_id: 2)
-Workout.create(exercise_name: "Push Ups", sets: 2, reps: 6, weight: 15, user_id: 2, exercise_id: 3)
+# Workout.create(exercise_name: "Bicep Curl", sets: 3, reps: 12, weight: 35, user_id: 2, exercise_id: 1)
+# Workout.create(exercise_name: "Lunges", sets: 3, reps: 12, weight: 100, user_id: 2, exercise_id: 2)
+# Workout.create(exercise_name: "Push Ups", sets: 2, reps: 6, weight: 15, user_id: 2, exercise_id: 3)
 # Workout.create(exercise_name: "Standing overhead dumbbell presses", sets: 2, reps: 6, weight: 20, user_id: 1, exercise_id: 5)
 
 puts "✅ Done seeding!"
